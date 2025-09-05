@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  # ------------------------------
+  # 1️⃣ WebGoat – cible web
+  # ------------------------------
+  webgoat:
+    image: vulnerables/web-goat
+    container_name: lab_webgoat
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  # ------------------------------
+  # 2️⃣ Metasploitable‑2 – cible système
+  # ------------------------------
+  metasploitable:
+    image: vulnerables/metasploitable2
+    container_name: lab_metasploitable
+    ports:
+      - "2222:22"      # SSH (login / password : msfadmin / msfadmin)
+      - "80:80"        # HTTP (Apache vulnérable)
+      - "3306:3306"    # MySQL (root / root)
+      - "445:445"      # SMB (partage Windows)
+      - "139:139"      # NetBIOS
+    restart: unless-stopped
