@@ -25,6 +25,7 @@ docker/*.log
 # Environnements virtuels
 venv/
 .env/
+.env
 __pycache__/
 *.py[cod]
 
