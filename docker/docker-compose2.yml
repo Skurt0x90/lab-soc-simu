@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  # ------------------------------
+  # 1️⃣ WebGoat – web https://github.com/WebGoat/WebGoat
+  # ------------------------------
+  webgoat:
+    image: vulnerables/web-goat
+    container_name: lab_webgoat
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  # ------------------------------
+  # 2️⃣ Vulnerable linux server
+  # ------------------------------
+  vulnserverlinux:
+    build: . #change archi later
+    container_name: lab_server
+    ports:
+      - "2222:22"   # SSH
+      - "2121:21"   # FTP
+      - "8080:80"   # HTTP (Apache)
+      - "3307:3306" # MySQL
+    restart: unless-stopped
+    
+ # vulnserverwindows:
