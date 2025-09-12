@@ -5,8 +5,8 @@ services:
   # 1️⃣ WebGoat – web https://github.com/WebGoat/WebGoat
   # ------------------------------
   webgoat:
-    image: vulnerables/web-goat
-    container_name: lab_webgoat
+    image: webgoat/webgoat
+    container_name: vulnerable-webapp
     ports:
       - "8080:8080"
     restart: unless-stopped
@@ -15,12 +15,12 @@ services:
   # 2️⃣ Vulnerable linux server
   # ------------------------------
   vulnserverlinux:
-    build: . custom_vuln/Dockerfile
-    container_name: lab_server
+    build: ./custom-vulnerable
+    container_name: vulnerable-linux
     ports:
       - "2222:22"   # SSH
       - "2121:21"   # FTP
-      - "8080:80"   # HTTP (Apache)
+      - "8081:80"   # HTTP (Apache)
       - "3307:3306" # MySQL
     restart: unless-stopped
     
