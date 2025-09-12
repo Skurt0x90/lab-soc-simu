@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.0
 
 LABEL maintainer="pentest_server_lab"
 
